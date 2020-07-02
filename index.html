@@ -1,5 +1,17 @@
 <html>
 	<body>
-		hi
+		<script>
+			function toLocal(timestamp) {
+				let dateObject = new Date(parseInt(timestamp) * 1000);
+				let pattern = /(.*) GMT[+-][0-9]{4}.*/;
+				let match = dateObject.toString().match(pattern);
+				return match[1]
+			}
+
+			let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			let timestamp = toLocal(window.location.hash.substring(1));
+			document.write("Current time zone: " + timezone + "\n<br>");
+			document.write("Time: " + timestamp);
+		</script>
 	</body>
 </html>
