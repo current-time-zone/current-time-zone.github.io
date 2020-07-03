@@ -10,27 +10,16 @@
 	<body>
 		<center>
 			<h1>Current Time Zone</h1>
-			<div class="main">
-				<div class="description"> Your Time zone: </div><div class="value" id="zonevalue"> </div>
-				<div class="description">Timestamp in your time zone: </div><div class="value" id="timevalue"> </div>
-				<div class="description"> Timestamp in UTC: </div><div class="value" id="utcTimevalue"></div>
-				<div class="description"> Relative to now: </div><div class="value" id="relativeTime"></div>
+			<div class="subhead">Distribute times easily</div>
+			<div align=left>
+				Current Time Zone is a simple tool you can use to distribute
+				time information in such a way that it will automatically be
+				localized to the user's time zone. To use it just send the
+				link <span class="code">http://current-time-zone.github.io/t#1593730500</span>
+				where you can replace the part after the <span class="code">t#</span>
+				with the <a href="https://en.wikipedia.org/wiki/Unix_time">UNIX timestamp</a>
+				of the time you want to distribute.
 			</div>
 		</center>
 	</body>
-	<script>
-		function renderMoment(m) {
-			return m.format("MMMM Do YYYY, h:mm:ss a")
-		}
-		function toMoment(timestamp) {
-			return moment(parseInt(timestamp) * 1000);
-		}
-
-		let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-		let timestamp = toMoment(window.location.hash.substring(1));
-		document.getElementById("zonevalue").innerHTML = timezone;
-		document.getElementById("timevalue").innerHTML = renderMoment(timestamp);
-		document.getElementById("utcTimevalue").innerHTML = renderMoment(timestamp.utc());
-		document.getElementById("relativeTime").innerHTML = timestamp.fromNow();
-	</script>
 </html>
