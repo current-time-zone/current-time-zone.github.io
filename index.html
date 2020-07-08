@@ -20,6 +20,48 @@
 				with the <a href="https://en.wikipedia.org/wiki/Unix_time">UNIX timestamp</a>
 				of the time you want to distribute.
 			</div>
+
+			<div class="dateinput">
+				<input id="year" type="text" class="dateform" size="4" placeholder="YYYY">
+				<span>-</span>
+				<input id="month" type="text" class="dateform" size="2" placeholder="MM">
+				<span>-</span>
+				<input id="day" type="text" class="dateform" size="2" placeholder="DD">
+				<span>&nbsp</span>
+				<input id="hour" type="text" class="dateform" size="2" placeholder="HH">
+				<span>:</span>
+				<input id="minute" type="text" class="dateform" size="2" placeholder="MM">
+				<span>:</span>
+				<input id="second" type="text" class="dateform" size="2" placeholder="SS">
+				<span>&nbsp&nbsp</span>
+				<button class="button" onclick="go()">Go</button>
+				<!-- <button class="button"><img src="link.png" alt="Link"/></button> -->
+			</id>
 		</center>
 	</body>
+	<script>
+		function setup() {
+			let m = moment();
+			document.getElementById("year").value = m.format("YYYY");
+			document.getElementById("month").value = m.format("MM");
+			document.getElementById("day").value = m.format("DD");
+			document.getElementById("hour").value = m.format("HH");
+			document.getElementById("minute").value = m.format("mm");
+			document.getElementById("second").value = "00";
+		}
+
+		function getNumericValue(id) {
+			return parseInt(document.getElementById(id).value, 10);
+		}
+
+		function go() {
+			let date = ["year", "month", "day", "hour", "minute", "second"].map(getNumericValue);
+			date[1] -= 1; // javascript nonsense
+			console.log(date);
+			let m = moment(date);
+			window.open("t#" + m.unix());
+		}
+
+		setup();
+	</script>
 </html>

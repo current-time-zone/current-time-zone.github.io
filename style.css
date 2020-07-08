@@ -38,6 +38,46 @@ h1 {
     font-style: italic;
 }
 
+.dateinput {
+  font-family: "Roboto", sans-serif;
+  padding: 1em;
+  font-size: 2em;
+  font-weight: lighter;
+}
+
+.dateform {
+  .dateinput;
+  font-family: "Roboto", sans-serif;
+  border-width:0px;
+  border:none;
+  color: #448;
+  background-color: #eef;
+  font-size: 1em;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.button {
+  font-family: "Roboto", sans-serif;
+  border-width:0px;
+  border:none;
+  color: #000;
+  background-color: #ccf;
+  font-size: 1em;
+  text-align: center;
+  font-weight: lighter;
+  vertical-align: center;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ccc;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
 a {
   color: #88c;
 }
