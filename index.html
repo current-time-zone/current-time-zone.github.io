@@ -22,32 +22,41 @@
 			</div>
 
 			<div class="dateinput">
-				<input id="year" type="text" class="dateform" size="4" placeholder="YYYY">
+				<span id="zone" class="zone"></span>
+				<br>
+				<input id="year" type="number" class="dateform fourwidth" placeholder="YYYY">
 				<span>-</span>
-				<input id="month" type="text" class="dateform" size="2" placeholder="MM">
+				<input id="month" type="number" class="dateform twowidth" placeholder="MM" min="1" max="12">
 				<span>-</span>
-				<input id="day" type="text" class="dateform" size="2" placeholder="DD">
+				<input id="day" type="number" class="dateform twowidth" placeholder="DD" min="1" max="31">
 				<span>&nbsp</span>
-				<input id="hour" type="text" class="dateform" size="2" placeholder="HH">
+				<input id="hour" type="number" class="dateform twowidth" placeholder="HH" min="1" max="12">
 				<span>:</span>
-				<input id="minute" type="text" class="dateform" size="2" placeholder="MM">
+				<input id="minute" type="number" class="dateform twowidth" placeholder="MM" min="0" max="59">
 				<span>:</span>
-				<input id="second" type="text" class="dateform" size="2" placeholder="SS">
-				<span>&nbsp&nbsp</span>
-				<button class="button" onclick="go()">Go</button>
-				<!-- <button class="button"><img src="link.png" alt="Link"/></button> -->
+				<input id="second" type="number" class="dateform twowidth" placeholder="SS" min="0" max="59">
+				<span>&nbsp</span>
+				<select id="ampm" type="text" class="dateform twowidth">
+					<option value="AM" class="dateform">AM</option>
+					<option value="PM" class="dateform">PM</option>
+				</select>
 			</id>
+			<p>
+			<button class="button" onclick="go()">Go</button>
+			<!-- <button class="button"><img src="link.png" alt="Link"/></button> -->
 		</center>
 	</body>
 	<script>
 		function setup() {
 			let m = moment();
 			document.getElementById("year").value = m.format("YYYY");
-			document.getElementById("month").value = m.format("MM");
-			document.getElementById("day").value = m.format("DD");
-			document.getElementById("hour").value = m.format("HH");
+			document.getElementById("month").value = m.format("M");
+			document.getElementById("day").value = m.format("D");
+			document.getElementById("hour").value = m.format("H");
 			document.getElementById("minute").value = m.format("mm");
 			document.getElementById("second").value = "00";
+			document.getElementById("ampm").value = "AM";
+			document.getElementById("zone").innerHTML = "(" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 		}
 
 		function getNumericValue(id) {
@@ -57,6 +66,10 @@
 		function go() {
 			let date = ["year", "month", "day", "hour", "minute", "second"].map(getNumericValue);
 			date[1] -= 1; // javascript nonsense
+			date[3] %= 12;
+			if (document.getElementById("ampm").value == "PM") {
+				date[3] += 12;
+			}
 			console.log(date);
 			let m = moment(date);
 			window.open("t#" + m.unix());

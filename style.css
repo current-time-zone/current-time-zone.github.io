@@ -17,6 +17,14 @@ h1 {
   border-bottom: 1px solid #eee;
 }
 
+.zone {
+    font-family: "Roboto", sans-serif;
+    font-size: 0.6em;
+    display:inline-block;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+}
+
 .code {
   font-family: "Courier", monospace;
 }
@@ -55,6 +63,20 @@ h1 {
   font-size: 1em;
   font-weight: lighter;
   text-align: center;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.fourwidth {
+    width: 3.5em;
+}
+
+.twowidth {
+    width: 2em;
 }
 
 .button {
