@@ -52,10 +52,10 @@
 			document.getElementById("year").value = m.format("YYYY");
 			document.getElementById("month").value = m.format("M");
 			document.getElementById("day").value = m.format("D");
-			document.getElementById("hour").value = m.format("H");
+			document.getElementById("hour").value = m.format("h");
 			document.getElementById("minute").value = m.format("mm");
 			document.getElementById("second").value = "00";
-			document.getElementById("ampm").value = "AM";
+			document.getElementById("ampm").value = m.format("a").toUpperCase();
 			document.getElementById("zone").innerHTML = "(" + Intl.DateTimeFormat().resolvedOptions().timeZone + ")";
 		}
 
