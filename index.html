@@ -15,8 +15,8 @@
 				Current Timezone is a simple tool you can use to distribute
 				time information in such a way that it will automatically be
 				localized to the user's timezone. To use it just send the
-				link <span class="code">http://current-time-zone.github.io/t#1593730500</span>
-				where you can replace the part after the <span class="code">t#</span>
+				link <span class="code">http://current-time-zone.github.io/t?1593730500</span>
+				where you can replace the part after the <span class="code">t?</span>
 				with the <a href="https://en.wikipedia.org/wiki/Unix_time">UNIX timestamp</a>
 				of the time you want to distribute.
 			</div>
@@ -72,7 +72,7 @@
 			}
 			console.log(date);
 			let m = moment(date);
-			window.open("t#" + m.unix());
+			window.open("t?" + m.unix());
 		}
 
 		setup();
